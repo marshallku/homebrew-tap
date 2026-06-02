@@ -1,9 +1,9 @@
 class MacSmartFans < Formula
   desc "Temperature-driven fan control for Apple Silicon Macs"
   homepage "https://github.com/marshallku/mac-smart-fans"
-  version "0.1.0"
-  url "https://github.com/marshallku/mac-smart-fans/releases/download/v0.1.0/msf-darwin-arm64"
-  sha256 "2412a166fed74d705b4e8f6573788e0c8893c99c353e44fad2de5c04e10532ba"
+  version "0.2.0"
+  url "https://github.com/marshallku/mac-smart-fans/releases/download/v0.2.0/msf-darwin-arm64"
+  sha256 "eed678ab0498fe3f2205c2d9a92b8673a8838f7987d4c582d1961f001fcadd6e"
   license :cannot_represent
 
   depends_on :macos
@@ -25,10 +25,10 @@ class MacSmartFans < Formula
         sudo chmod 0440 /etc/sudoers.d/msf-#{ENV["USER"]}
         sudo visudo -c -f /etc/sudoers.d/msf-#{ENV["USER"]}
 
-      To install the persistent daemon (curve loop on boot):
+      To install the persistent daemon (curve loop on boot, all fans by default):
 
         msf init --profile balanced -o ~/.config/msf/curve.toml
-        sudo msf install --curve ~/.config/msf/curve.toml --fan 0
+        sudo msf install --curve ~/.config/msf/curve.toml
         msf status
 
       Full install + uninstall guide:
@@ -37,6 +37,6 @@ class MacSmartFans < Formula
   end
 
   test do
-    assert_match "msf 0.1.0", shell_output("#{bin}/msf --version")
+    assert_match "msf 0.2.0", shell_output("#{bin}/msf --version")
   end
 end
