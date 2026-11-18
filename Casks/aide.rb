@@ -14,7 +14,7 @@ cask "aide" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "AIDE.app"
   binary "#{appdir}/AIDE.app/Contents/MacOS/aidectl"
